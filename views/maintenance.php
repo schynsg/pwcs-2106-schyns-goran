@@ -1,8 +1,21 @@
 <?php
 
-$directory = "/images/thumbs/";
+if (isset($_POST['thumbs'])){
+
+    // supprimer toutes les vieilles vignettes
+    $directory = "./images/thumbs/";
+    $files = glob($directory . "*.jpg");
+    foreach ($files as $file){
+        unlink($file);
+    }
+
+    // Créer toutes les vignettes
+}
+
+
+$directory = "./images/thumbs/";
 $filecount = 0;
-$files = glob($directory . "*");
+$files = glob($directory . "*.jpg");
 if ($files){
     $filecount = count($files);
 }
@@ -27,8 +40,8 @@ if ($files){
 <p>Pour le moment, il y a <?= $filecount ?> vignettes dans le dossier des
     vignettes
 <p>
-<form action="vignettes" method="post">
-    <input type="submit" value="générer de nouvelles vignettes">
+<form action="#" method="post">
+    <input type="submit" name="thumbs" value="générer de nouvelles vignettes">
 </form>
 </body>
 </html>
