@@ -9,40 +9,48 @@
 </head>
 <body>
 
+    <?php
+        foreach ($levels as $level) {
+            print_r($levels);
+            print_r('</br>');
+            print_r('</br>');
+        }
+        die();
+    ?>
 
     <h1>Toutes nos listes par élection</h1>
     <?php
         foreach ($levels as $level) {
     ?>
-        <?php
-            foreach ($applications as $app) {
-        ?>
-            <?php
-                if ($app->niveau == $level->niveau) {
-            ?>
-            <section>
-                <h2>Les candidats Écolo au <?= $level->niveau ?>, arrondissement « <?= $app->arrondissement ?> »</h2>
-                <ol>
-                    <li>
-                        <div>Philippe Lamberts</div>
-                        <div>1e de liste</div>
-                        <div>
-                            <img src="/images/thumbs/1E-Lamberts-cRalitza-Soultanova-1.jpg"
-                                    alt="">
-                        </div>
-                        <a href="/candidat/?id=1">Voir la fiche de Philippe Lamberts</a>
-                    </li>
-                </ol>
-                <div>
-                    <a href="/election/?n_id=1&a_id=14">Voir toute la liste Écolo pour le parlement européen, arrondissement « Belgique »</a>
-                </div>
-            </section>
-            <?php
-                }
-            ?>
-        <?php
-            } //end foreach applications
-        ?>
+        <section>
+            <h2>Les candidats Écolo au <?= $level->niveau ?>, arrondissement «  »</h2>
+            <ol>
+                <?php
+                foreach ($applications as $app) {
+                ?>
+                    <?php
+                    if ($app->niveau == $level->niveau) {
+                    ?>
+                        <li>
+                            <div><?= $app->nom ?></div>
+                            <div><?= $app->statut ?></div>
+                            <div>
+                                <img src="/images/thumbs/<?= $app->photo ?>"
+                                        alt="">
+                            </div>
+                            <a href="/candidat/?id=<?= $app->id ?>">Voir la fiche de <?= $app->nom ?></a>
+                        </li>
+                    <?php
+                        } // end if app->niveau
+                    ?>
+                <?php
+                    } //end foreach applications
+                ?>
+            </ol>
+            <div>
+                <a href="/election/?n_id=1&a_id=14">Voir toute la liste Écolo pour le parlement européen, arrondissement « Belgique »</a>
+            </div>
+        </section>
     <?php
         } //end foreach levels
     ?>

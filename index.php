@@ -1,10 +1,6 @@
 <?php
 
-// include composer autoload
 require 'vendor/autoload.php';
-
-// import the Intervention Image Manager Class
-use Intervention\Image\ImageManager;
 
 require('./configs/config.php');
 require('./utils/dbaccess.php');
