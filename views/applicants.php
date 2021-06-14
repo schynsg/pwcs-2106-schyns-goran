@@ -8,22 +8,13 @@
     <title>Candidats - Écolo</title>
 </head>
 <body>
-
-    <?php
-        foreach ($levels as $level) {
-            print_r($levels);
-            print_r('</br>');
-            print_r('</br>');
-        }
-        die();
-    ?>
-
     <h1>Toutes nos listes par élection</h1>
     <?php
         foreach ($levels as $level) {
     ?>
         <section>
             <h2>Les candidats Écolo au <?= $level->niveau ?>, arrondissement «  »</h2>
+
             <ol>
                 <?php
                 foreach ($applications as $app) {
@@ -47,9 +38,11 @@
                     } //end foreach applications
                 ?>
             </ol>
+
             <div>
                 <a href="/election/?n_id=1&a_id=14">Voir toute la liste Écolo pour le parlement européen, arrondissement « Belgique »</a>
             </div>
+
         </section>
     <?php
         } //end foreach levels
