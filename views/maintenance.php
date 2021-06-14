@@ -4,21 +4,25 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 if (isset($_POST['thumbs'])){
 
-    // supprimer toutes les vieilles vignettes
-    $directory = "./images/thumbs/";
-    $files = glob($directory . "*.jpg");
-    foreach ($files as $file){
+    // Supprimer toutes les vieilles vignettes
+    $thumbsDirectory = "./images/thumbs/";
+    $thumbsFiles = glob($thumbsDirectory . "*.jpg");
+    foreach ($thumbsFiles as $file){
         unlink($file);
     }
 
     // Créer toutes les vignettes
-
-    $img = Image::make('./images/1_Alain_Maron_8.jpg');
-    $img->resize(300, null, function ($constraint) {
-        $constraint->aspectRatio();
-    });
-    $img->crop(300, 300, 0, 0);
-    $img->save('./images/thumbs/1_Alain_Maron_8.jpg');
+    $imagesDirectory = './images/';
+    $images = glob($imagesDirectory . "*.jpg");
+    foreach ($images as $image){
+        $img = Image::make($image);
+        $img->resize(null, 300, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+        $img->crop(300, 300);
+        $img->save(str_replace('./images/', './images/thumbs/', $image));
+    }
 }
 
 
