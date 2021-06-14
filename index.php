@@ -2,12 +2,15 @@
 require('./configs/config.php');
 require('./utils/dbaccess.php');
 require('./models/applicant.php');
+require('./models/level.php');
+require ('./models/application.php');
 
 $connection = getConnection();
 
 $view = 'applicants.php';
 
-$applicants = all($connection);
+$applicants = allApplicants($connection);
+$levels = allLevels($connection);
 
 require("./views/{$view}");
 

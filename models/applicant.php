@@ -1,9 +1,9 @@
 <?php
 
-function all(PDO $connection)
+function allApplicants(PDO $connection)
 {
-    $usersRequest = 'SELECT * FROM candidats';
-    $pdoSt = $connection->query($usersRequest);
+    $applicantsRequest = 'SELECT * FROM candidats';
+    $pdoSt = $connection->query($applicantsRequest);
 
     return $pdoSt->fetchAll();
 }
