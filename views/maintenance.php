@@ -1,5 +1,7 @@
 <?php
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 if (isset($_POST['thumbs'])){
 
     // supprimer toutes les vieilles vignettes
@@ -10,6 +12,13 @@ if (isset($_POST['thumbs'])){
     }
 
     // Créer toutes les vignettes
+
+    $img = Image::make('./images/1_Alain_Maron_8.jpg');
+    $img->resize(300, null, function ($constraint) {
+        $constraint->aspectRatio();
+    });
+    $img->crop(300, 300, 0, 0);
+    $img->save('./images/thumbs/1_Alain_Maron_8.jpg');
 }
 
 
