@@ -1,11 +1,15 @@
 <?php
 require('./configs/config.php');
 require('./utils/dbaccess.php');
-//require('./models/user.php');
+require('./models/applicant.php');
 
 $connection = getConnection();
 
-echo 'Test';
+$view = 'applicants.php';
+
+$applicants = all($connection);
+
+require("./views/{$view}");
 
 /*
 if (isset($_GET['id'])) {
