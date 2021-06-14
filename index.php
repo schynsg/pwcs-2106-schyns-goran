@@ -7,7 +7,7 @@ require ('./models/application.php');
 
 $connection = getConnection();
 
-if (isset($_GET['maintenance'])) {
+if ($_SERVER['REQUEST_URI'] == '/maintenance') {
     $view = 'maintenance.php';
 } else {
     $applicants = allApplicants($connection);

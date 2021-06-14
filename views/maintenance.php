@@ -1,3 +1,15 @@
+<?php
+
+$directory = "/images/thumbs/";
+$filecount = 0;
+$files = glob($directory . "*");
+if ($files){
+    $filecount = count($files);
+}
+
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,7 +24,7 @@
 <p>Ce formulaire vous permet de déclencher la génération de vignettes d’une
     taille de 300 px (largeur) sur 300 px (hauteur).</p>
 <p>Les images originales seront d’abord redimensionnées et cropées</p>
-<p>Pour le moment, il y a 345 vignettes dans le dossier des
+<p>Pour le moment, il y a <?= $filecount ?> vignettes dans le dossier des
     vignettes
 <p>
 <form action="vignettes" method="post">
